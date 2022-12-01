@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_world/SitiosInteres.dart';
 import "login.dart";
 
 class splash extends StatefulWidget {
@@ -14,6 +16,20 @@ class _splashStatus extends State<splash> {
     super.initState();
   }
 
+  Future<void> _closeSplash() async {
+    Future.delayed(const Duration(seconds: 3), () async {
+      var usuarioLogueado = FirebaseAuth.instance.currentUser;
+      if (usuarioLogueado == null) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const Login()));
+      } else {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const sitioInteres()));
+      }
+    },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,14 +39,6 @@ class _splashStatus extends State<splash> {
           scale: 2,
         ),
       ),
-    );
-  }
-
-  Future<void> _closeSplash() async {
-    Future.delayed(const Duration(seconds: 3), () async {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const login()));
-    },
     );
   }
 }

@@ -1,15 +1,42 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_world/SitiosInteres.dart';
+import 'package:my_world/login.dart';
 
 class poi extends StatefulWidget {
   const poi({Key? key}) : super(key: key);
   @override
   State<poi> createState() => _poiState();
 }
+enum Menu {sitiosTuristicos, cerrarSesion}
 
 class _poiState extends State<poi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Inicio"),
+        actions: [
+          PopupMenuButton(
+            onSelected: (Menu item){
+              setState(() {
+                if (item == Menu.cerrarSesion){
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
+                } else {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => sitioInteres()));
+                }
+              });
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry <Menu>>[
+              const PopupMenuItem(
+                value: Menu.sitiosTuristicos, child: Text("Sitios Turisticos"),
+              ),
+              const PopupMenuItem(
+                value: Menu.cerrarSesion, child: Text("Cerrar Sesión"),
+              ),
+            ],
+          )],
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -76,7 +103,7 @@ class _poiState extends State<poi> {
             padding: EdgeInsets.only(top: 5, left: 8, right: 8, bottom: 5),
             child: SingleChildScrollView(
             child: Text(
-                style: TextStyle(fontFamily: '  Arial',
+                style: TextStyle(fontFamily: 'Arial',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
@@ -87,19 +114,19 @@ class _poiState extends State<poi> {
               padding: EdgeInsets.only(top: 5, left: 8, right: 8, bottom: 5),
               child: SingleChildScrollView(
                 child: Text(
-                    style: TextStyle(fontFamily: '  Arial',
-                        fontSize: 20,
+                    style: TextStyle(fontFamily: 'Arial',
+                        fontSize: 18,
                         color: Colors.black),
                     textAlign: TextAlign.justify,
                         "Florencia es una ciudad joven ubicada en el piedemonte de la Cordillera Oriental. "
                         "El departamento de Caquetá está bañado por 16 ríos e innumerables quebradas, "
-                        "de esos ríos, Florencia está rodeada por los ríos Hacha, Caraño, Orteguaza, San Pedro y Bodoquero; "
+                        "entre los que se encuentran los ríos Hacha, Caraño, Orteguaza, San Pedro y Bodoquero; "
                         "y por algunas quebradas como la Sardina y la Perdiz; centro importante para la historia de la ciudad. "
                         "Este hecho hace de Florencia y sus alrededores un centro hidrográfico importante y "
-                        "uno de los mejores destinos turísticos del sur del país. "),
+                        "uno de los mejores destinos turísticos del sur del país."),
               ))
-        ],
-      ),
+    ],
+        ),
     );
   }
 }
