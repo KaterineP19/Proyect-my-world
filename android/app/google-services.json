@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "818652364918",
+    "project_id": "my-world-56462",
+    "storage_bucket": "my-world-56462.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818652364918:android:a9da9b030b5825fda59f57",
+        "android_client_info": {
+          "package_name": "com.HelloWord.my_world"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818652364918-cgbv95ts8uladtntlpggqr7quees6go6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwZrMbmmLlIkasB8z0Gms2sOhr0N63S6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818652364918-cgbv95ts8uladtntlpggqr7quees6go6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
