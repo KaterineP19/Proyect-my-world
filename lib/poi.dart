@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_world/SitiosInteres.dart';
 import 'package:my_world/login.dart';
+import 'package:my_world/repositorio/pois.dart';
 
 class poi extends StatefulWidget {
   const poi({Key? key}) : super(key: key);
   @override
   State<poi> createState() => _poiState();
 }
-enum Menu {sitiosTuristicos, cerrarSesion}
+enum Menu {inicio, cerrarSesion}
 
 class _poiState extends State<poi> {
   @override
@@ -23,13 +23,13 @@ class _poiState extends State<poi> {
                 if (item == Menu.cerrarSesion){
                   FirebaseAuth.instance.signOut();
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
-                } else {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => sitioInteres()));
-                }
-              });
+                } else {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => pois()));
+              }},
+              );
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry <Menu>>[
               const PopupMenuItem(
-                value: Menu.sitiosTuristicos, child: Text("Sitios Turisticos"),
+                value: Menu.inicio, child: Text("Sitios Turisticos"),
               ),
               const PopupMenuItem(
                 value: Menu.cerrarSesion, child: Text("Cerrar Sesión"),

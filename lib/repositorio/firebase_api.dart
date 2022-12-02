@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_world/SitiosInteres.dart';
 import 'package:my_world/models/User.dart' as UserApp;
+
 
 class firebase_api{
 

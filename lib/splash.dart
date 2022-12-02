@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_world/SitiosInteres.dart';
+import 'package:my_world/poi.dart';
 import "login.dart";
 
 class splash extends StatefulWidget {
@@ -24,7 +24,7 @@ class _splashStatus extends State<splash> {
             MaterialPageRoute(builder: (context) => const Login()));
       } else {
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const sitioInteres()));
+            MaterialPageRoute(builder: (context) => const poi()));
       }
     },
     );
